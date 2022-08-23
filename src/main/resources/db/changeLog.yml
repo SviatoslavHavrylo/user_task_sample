@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      file: changeLogs/22.08.23_initial.sql
+      relativeToChangelogFile: true

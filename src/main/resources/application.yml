@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: User tasks sample
+  datasource:
+    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/userTask?createDatabaseIfNotExist=true
+    username: ${DB_USER}
+    password: ${DB_USER_PASSWORD}
+  liquibase:
+    change-log: classpath:db/changeLog.yml
+    enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        enable_lazy_load_no_trans: true
+        globally_quoted_identifiers: true
+        format_sql: true
+    show-sql: true
+
+springdoc:
+  swagger-ui:
+    doc-expansion: none
+
+server:
+  port: 8080
+logging:
+  level:
+    root: INFO
+  pattern:
+    file: '%d{dd-MM-yyyy HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
+    console: '%d{MM-dd HH:mm:ss} [%thread] %highlight(%-5level) %cyan(%logger{36}) - %msg%n'
+  file:
+    path: ./logs
